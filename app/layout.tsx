@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} bg-gray-50`}>
+      <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased`}>
         <Header />
         <div className="flex">
           <Sidebar />
-          <main className="flex-1 p-4 pb-24 md:pb-4 max-w-5xl mx-auto">{children}</main>
+          <main className="flex-1 px-4 md:px-8 py-5 pb-28 md:pb-10 max-w-6xl mx-auto w-full">{children}</main>
         </div>
         <BottomNav />
       </body>
