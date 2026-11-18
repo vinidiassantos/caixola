@@ -1,15 +1,19 @@
-﻿export type StatusPagamento = "pago" | "pendente" | "atrasado";
+﻿export interface Unidade {
+  numero: string;
+  responsavel?: string;
+  valorMensal: number;
+}
 
-export interface Pagamento {
+export interface PagamentoUnidade {
   id: string;
+  unidade: string;
   competencia: string;
   valor: number;
   vencimento: string;
   pagamento?: string;
-  status: StatusPagamento;
-  unidade: string;
-  bloco: string;
 }
+
+export type StatusVisual = "pago" | "pendente" | "vencido" | "inadimplente";
 
 export interface Lancamento {
   id: string;
@@ -28,10 +32,15 @@ export interface CategoriaDespesa {
 }
 
 export interface ResumoCaixa {
-  saldoAtual: number;
   variacaoPercentual: number;
   receitasMes: number;
   despesasMes: number;
   inadimplenciaPercentual: number;
   unidadesInadimplentes: number;
+}
+
+export interface CaixaDetalhado {
+  contaCorrente: number;
+  fundoReserva: number;
+  fundoObras: number;
 }

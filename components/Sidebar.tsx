@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Receipt, CreditCard, FolderOpen, Settings2 } from "lucide-react";
+import { LayoutDashboard, Wallet, Receipt, CreditCard, FolderOpen, Settings2 } from "lucide-react";
 
 const items = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/caixa", label: "Caixa", icon: Wallet },
   { href: "/prestacao-de-contas", label: "Prestação de Contas", icon: Receipt },
   { href: "/pagamentos", label: "Pagamentos", icon: CreditCard },
   { href: "/documentos", label: "Documentos", icon: FolderOpen },
@@ -24,9 +25,7 @@ export function Sidebar() {
             key={item.href}
             href={item.href}
             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-              active
-                ? "bg-indigo-50 text-indigo-700"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+              active ? "bg-indigo-50 text-indigo-700" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
             }`}
           >
             <Icon className="w-[18px] h-[18px]" />

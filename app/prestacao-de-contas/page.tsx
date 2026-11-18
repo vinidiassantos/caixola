@@ -10,22 +10,32 @@ export default function PrestacaoDeContas() {
   const { data, hydrated } = useCaixolaData();
   if (!hydrated) return <p className="text-sm text-slate-500">Carregando…</p>;
 
+  const totalOrcado = data.despesas.reduce((s, d) => s + d.orcado, 0);
+  const totalRealizado = data.despesas.reduce((s, d) => s + d.realizado, 0);
+
   return (
     <div className="space-y-4">
       <div>
         <h1 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">Prestação de Contas</h1>
-        <p className="text-sm text-slate-500 mt-1">Maio/2025</p>
+        <p className="text-sm text-slate-500 mt-1">Novembro/2025</p>
       </div>
 
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
         <CheckCircle2 className="w-4 h-4" />
-        Aprovado pelo Conselho em 15/06
+        Aprovado pelo Conselho em 15/11
       </div>
 
       <div className="bg-white rounded-2xl border border-slate-200/70 shadow-sm shadow-slate-900/[0.02]">
-        <div className="px-5 py-4 border-b border-slate-100">
-          <h2 className="text-sm font-semibold text-slate-900">Despesas por categoria</h2>
-          <p className="text-xs text-slate-500 mt-0.5">Realizado vs. orçado</p>
+        <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div>
+            <h2 className="text-sm font-semibold text-slate-900">Despesas por categoria</h2>
+            <p className="text-xs text-slate-500 mt-0.5">Realizado vs. orçado — Novembro/2025</p>
+          </div>
+          <div className="text-right text-xs">
+            <p className="text-slate-500">Total</p>
+            <p className="font-semibold text-slate-900 tabular-nums">{formatBRL(totalRealizado)}</p>
+            <p className="text-slate-400 tabular-nums">/ {formatBRL(totalOrcado)}</p>
+          </div>
         </div>
         <ul className="divide-y divide-slate-100">
           {data.despesas.map((c) => {
